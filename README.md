@@ -8,4 +8,5 @@ This is my personal website which gives a general overview of me, Christopher M.
 
 Versions:
 - 0.0: prepared test website
-- 0.1: updated README.md format	 
+- 0.1: updated README.md format
+- 1.0: website ready with home div
