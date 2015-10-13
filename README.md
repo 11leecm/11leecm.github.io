@@ -14,3 +14,4 @@ Versions:
 - 2.0: added contact div
 - 2.1: removed contact form, Github Pages do not support PHP
 - 2.2: re-added contact form, using Formspree.io to submit form via AJAX
+- 2.3: fixed activePanel error

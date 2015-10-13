@@ -105,9 +105,7 @@
 							
 						// Determine whether we're already at the target.
 						if (activePanelId == id && !activateSamePanel) {
-							if (samePanel) {
-								return false;
-							}
+							return false;
 						}
 
 						// Lock.
