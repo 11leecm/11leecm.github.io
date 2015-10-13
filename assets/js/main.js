@@ -9,23 +9,22 @@
 	var settings = {
 
 		// Speed to load page.
-			loadSpeed: 800,
+		loadSpeed: 800,
 
 		// Speed to resize panel.
-			resizeSpeed: 600,
+		resizeSpeed: 600,
 
 		// Speed to fade in/out.
-			fadeSpeed: 300,
+		fadeSpeed: 300,
 
 		// Size factor.
-			sizeFactor: 11.5,
+		sizeFactor: 11.5,
 
 		// Minimum point size.
-			sizeMin: 15,
+		sizeMin: 15,
 
 		// Maximum point size.
-			sizeMax: 20
-
+		sizeMax: 20
 	};
 
 	var $window = $(window);
@@ -71,176 +70,302 @@
 				}
 
 				// Body.
-					$body._resize = function() {
-						var factor = ($window.width() * $window.height()) / (1440 * 900);
-						$body.css('font-size', Math.min(Math.max(Math.floor(factor * settings.sizeFactor), settings.sizeMin), settings.sizeMax) + 'pt');
-						$main.height(panels[activePanelId].outerHeight());
-						$body._reposition();
-					};
+				$body._resize = function() {
+					var factor = ($window.width() * $window.height()) / (1440 * 900);
+					$body.css('font-size', Math.min(Math.max(Math.floor(factor * settings.sizeFactor), settings.sizeMin), settings.sizeMax) + 'pt');
+					$main.height(panels[activePanelId].outerHeight());
+					$body._reposition();
+				};
 
-					$body._reposition = function() {
-						if (skel.vars.touch && (window.orientation == 0 || window.orientation == 180))
-							$wrapper.css('padding-top', Math.max((($window.height() - (panels[activePanelId].outerHeight() + $footer.outerHeight())) / 2) - $nav.height(), 30) + 'px');
-						else
-							$wrapper.css('padding-top', ((($window.height() - panels[firstPanelId].height()) / 2) - $nav.height()) + 'px');
-					};
+				$body._reposition = function() {
+					if (skel.vars.touch && (window.orientation == 0 || window.orientation == 180))
+						$wrapper.css('padding-top', Math.max((($window.height() - (panels[activePanelId].outerHeight() + $footer.outerHeight())) / 2) - $nav.height(), 30) + 'px');
+					else
+						$wrapper.css('padding-top', ((($window.height() - panels[firstPanelId].height()) / 2) - $nav.height()) + 'px');
+				};
 
 				// Panels.
-					$panels.each(function(i) {
-						var t = $(this), id = t.attr('id');
+				$panels.each(function(i) {
+					var t = $(this), id = t.attr('id');
 
-						panels[id] = t;
+					panels[id] = t;
 
-						if (i == 0) {
+					if (i == 0) {
+						firstPanelId = id;
+						activePanelId = id;
+					}
+					else
+						t.hide();
 
-							firstPanelId = id;
-							activePanelId = id;
+					t._activate = function(instant, activateSamePanel, contactValidate) {
 
+						// Check lock state.
+						if (isLocked)
+							return false;
+							
+						// Determine whether we're already at the target.
+						if (activePanelId == id && !activateSamePanel) {
+							if (samePanel) {
+								return false;
+							}
 						}
+
+						// Lock.
+						isLocked = true;
+
+						// Change nav link (if it exists).
+						$nav_links.removeClass('active');
+						$nav_links.filter('[href="#' + id + '"]').addClass('active');
+
+						// Change hash.
+						if (i == 0)
+							window.location.hash = '#';
 						else
-							t.hide();
+							window.location.hash = '#' + id;
 
-						t._activate = function(instant) {
+						// Add bottom padding.
+						var x = parseInt($wrapper.css('padding-top')) +
+								panels[id].outerHeight() +
+								$nav.outerHeight() +
+								$footer.outerHeight();
 
-							// Check lock state and determine whether we're already at the target.
-								if (isLocked
-								||	activePanelId == id)
-									return false;
+						if (x > $window.height())
+							$wrapper.addClass('tall');
+						else
+							$wrapper.removeClass('tall');
 
-							// Lock.
-								isLocked = true;
+						// Fade out active panel.
+						$footer.fadeTo(settings.fadeSpeed, 0.0001);
+						
+						panels[activePanelId].fadeOut(instant ? 0 : settings.fadeSpeed, function() {
+						
+							// Set new active.
+							activePanelId = id;
+							
+							// Force scroll to top.
+							$hbw.animate({
+								scrollTop: 0
+							}, settings.resizeSpeed, 'swing');
 
-							// Change nav link (if it exists).
-								$nav_links.removeClass('active');
-								$nav_links.filter('[href="#' + id + '"]').addClass('active');
+							// Reposition.
+							$body._reposition();
+							
+							// Contact Form Validation
+							if (contactValidate) {
+								$('.contact_error').hide();
+								var name = $("#contact_name").val();
+								var email = $("#contact_email").val();
+								var subject = $("#contact_subject").val();
+								var message = $("#contact_message").val();
+								if (name == "") {
+									$("#contact_name_error").show();
+									errorsPresent = true;
+								}
+								if (subject == "") {
+									$("#contact_subject_error").show();
+									errorsPresent = true;
+								}
+								if (email == "") {
+									$("#contact_email_error").show();
+									errorsPresent = true;
+								}
+								if (message == "") {
+									$("#contact_message_error").show();
+									errorsPresent = true;
+								}
+							}
 
-							// Change hash.
-								if (i == 0)
-									window.location.hash = '#';
-								else
-									window.location.hash = '#' + id;
+							// Resize main to height of new panel.
+							$main.animate({
+								height: panels[activePanelId].outerHeight()
+							}, instant ? 0 : settings.resizeSpeed, 'swing', function() {
 
-							// Add bottom padding.
-								var x = parseInt($wrapper.css('padding-top')) +
-										panels[id].outerHeight() +
-										$nav.outerHeight() +
-										$footer.outerHeight();
+								// Fade in new active panel.
+								$footer.fadeTo(instant ? 0 : settings.fadeSpeed, 1.0);
+								panels[activePanelId].fadeIn(instant ? 0 : settings.fadeSpeed, function() {
 
-								if (x > $window.height())
-									$wrapper.addClass('tall');
-								else
-									$wrapper.removeClass('tall');
-
-							// Fade out active panel.
-								$footer.fadeTo(settings.fadeSpeed, 0.0001);
-								panels[activePanelId].fadeOut(instant ? 0 : settings.fadeSpeed, function() {
-
-									// Set new active.
-										activePanelId = id;
-
-										// Force scroll to top.
-											$hbw.animate({
-												scrollTop: 0
-											}, settings.resizeSpeed, 'swing');
-
-										// Reposition.
-											$body._reposition();
-
-										// Resize main to height of new panel.
-											$main.animate({
-												height: panels[activePanelId].outerHeight()
-											}, instant ? 0 : settings.resizeSpeed, 'swing', function() {
-
-												// Fade in new active panel.
-													$footer.fadeTo(instant ? 0 : settings.fadeSpeed, 1.0);
-													panels[activePanelId].fadeIn(instant ? 0 : settings.fadeSpeed, function() {
-
-														// Unlock.
-															isLocked = false;
-
-													});
-											});
+									// Unlock.
+									isLocked = false;
 
 								});
-
-						};
-
-					});
-
-				// Nav + Jumplinks.
-					$nav_links.add($jumplinks).click(function(e) {
-						var t = $(this), href = t.attr('href'), id;
-
-						if (href.substring(0,1) == '#') {
-
-							e.preventDefault();
-							e.stopPropagation();
-
-							id = href.substring(1);
-
-							if (id in panels)
-								panels[id]._activate();
-
-						}
-
-					});
-
-				// Window.
-					$window
-						.resize(function() {
-
-							if (!isLocked)
-								$body._resize();
-
-						});
-
-					$window
-						.on('orientationchange', function() {
-
-							if (!isLocked)
-								$body._reposition();
-
-						});
-
-					if (skel.vars.IEVersion < 9)
-						$window
-							.on('resize', function() {
-								$wrapper.css('min-height', $window.height());
 							});
 
-				// Fix: Placeholder polyfill.
-					$('form').placeholder();
+						});
+					};
+				});
 
-				// Prioritize "important" elements on mobile.
-					skel.on('+mobile -mobile', function() {
-						$.prioritize(
-							'.important\\28 mobile\\29',
-							skel.breakpoint('mobile').active
-						);
+				// Nav + Jumplinks.
+				$nav_links.add($jumplinks).click(function(e) {
+					var t = $(this), href = t.attr('href'), id;
+
+					if (href.substring(0,1) == '#') {
+
+						e.preventDefault();
+						e.stopPropagation();
+
+						id = href.substring(1);
+
+						if (id in panels)
+							panels[id]._activate(false, false, false);
+
+					}
+
+				});
+
+				// Window.
+				$window
+					.resize(function() {
+
+						if (!isLocked)
+							$body._resize();
+
 					});
 
-				// CSS polyfills (IE<9).
-					if (skel.vars.IEVersion < 9)
-						$(':last-child').addClass('last-child');
+				$window
+					.on('orientationchange', function() {
 
-				// Init.
+						if (!isLocked)
+							$body._reposition();
+
+					});
+
+				if (skel.vars.IEVersion < 9)
 					$window
-						.trigger('resize');
+						.on('resize', function() {
+							$wrapper.css('min-height', $window.height());
+						});
 
-					if (hash && hash in panels)
-						panels[hash]._activate(true);
+				// Fix: Placeholder polyfill.
+				$('form').placeholder();
 
-					$wrapper.fadeTo(settings.loadSpeed, 1.0);
+				// Prioritize "important" elements on mobile.
+				skel.on('+mobile -mobile', function() {
+					$.prioritize(
+						'.important\\28 mobile\\29',
+						skel.breakpoint('mobile').active
+					);
+				});
+
+				// CSS polyfills (IE<9).
+				if (skel.vars.IEVersion < 9)
+					$(':last-child').addClass('last-child');
+
+					
+				// Init.
+				$('.contact_error').hide();
+				$window
+					.trigger('resize');
+
+				if (hash && hash in panels)
+					panels[hash]._activate(true, false, false);
+
+				$wrapper.fadeTo(settings.loadSpeed, 1.0);
+					
+				// Contact Form
+				$("#contact_submit").click(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					// Form Processing
+						var name = $("#contact_name").val();
+						var email = $("#contact_email").val();
+						var subject = $("#contact_subject").val();
+						var message = $("#contact_message").val();
+						if (name == "" || subject == "" || email == "" || message == "") {
+							panels["contact"]._activate(false, true, true);
+						} else {
+							var dataString = 'name=' + name + '&email=' + email + '&subject=' + subject + '&message=' + message;
+							$.ajax({
+								type: "POST",
+								url: "contact.php",
+								data: dataString,
+								success: function(msg) {
+									if (msg == "Success") {
+										panels["contact_submit_success"]._activate(false, true, false);
+									} else {
+										panels["contact_submit_failure"]._activate(false, true, false);
+									}
+								},
+								error: function() {
+									panels["contact_submit_failure"]._activate(false, true, false);
+								}
+							});
+						}
+				});
 
 			})
 			.on('-desktop', function() {
-
 				window.setTimeout(function() {
 					location.reload(true);
 				}, 50);
-
+			})
+			.on('+mobile', function() {
+				// Init.
+				$('.contact_error').hide();
+				$('#contact_submit_success').hide();
+				$('#contact_submit_failure').hide();
+					
+				// Contact Form
+				$("#contact_submit").click(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.contact_error').hide();
+					var errorsPresent = false;
+					var name = $("#contact_name").val();
+					var email = $("#contact_email").val();
+					var subject = $("#contact_subject").val();
+					var message = $("#contact_message").val();
+					if (name == "") {
+						$("#contact_name_error").show();
+						errorsPresent = true;
+					}
+					if (subject == "") {
+						$("#contact_subject_error").show();
+						errorsPresent = true;
+					}
+					if (email == "") {
+						$("#contact_email_error").show();
+						errorsPresent = true;
+					}
+					if (message == "") {
+						$("#contact_message_error").show();
+						errorsPresent = true;
+					}
+					if (errorsPresent == true) {
+						// No action needed on mobile.
+					} else {
+						var dataString = 'name=' + name + '&email=' + email + '&subject=' + subject + '&message=' + message;
+						$.ajax({
+							type: "POST",
+							url: "contact.php",
+							data: dataString,
+							success: function() {
+								if (msg == "Success") {
+									$('#contact').hide();
+									$('#contact_submit_success').show();
+								} else {
+									$('#contact').hide();
+									$('#contact_submit_failure').show();
+								}
+							},
+							error: function() {
+								$('#contact').hide();
+								$('#contact_submit_failure').show();
+							}
+						});
+					}
+				});
+				
+				$("#contact_submit_success_return").click(function(e) {
+					$('#contact').show();
+					$('#contact_submit_success').hide();
+				});
+				
+				$("#contact_submit_failure_return").click(function(e) {
+					$('#contact').show();
+					$('#contact_submit_failure').hide();
+				});
 			});
-
+			
 	});
 
 })(jQuery);

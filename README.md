@@ -10,3 +10,5 @@ Versions:
 - 0.0: prepared test website
 - 0.1: updated README.md format
 - 1.0: website ready with home div
+- 1.1: fixed me01.jpg, capitalization error
+- 2.0: added contact div

@@ -811,7 +811,7 @@
 	}
 
 	p, ul, ol, dl, table, blockquote, form {
-		margin-bottom: 2em;
+		margin-bottom: 1em;
 	}
 
 /* Table */
@@ -844,7 +844,7 @@
 		display: block;
 		font-weight: 400;
 		color: #363636;
-		margin: 0 0 1em 0;
+		margin: 0 0 0.5em 0;
 	}
 
 	form input[type="text"],
@@ -1097,6 +1097,12 @@
 			z-index: 1;
 		}
 
+/* Contact */
+		
+	.contact_error {
+			color: red;
+	}
+
 /* Footer */
 
 	#footer {
@@ -1164,7 +1170,7 @@
 			}
 
 			h2 {
-				font-size: 1.8em;
+				font-size: 2.0em;
 				letter-spacing: -0.015em;
 			}
 
@@ -1176,7 +1182,7 @@
 		/* Section/Article */
 
 			header {
-				margin: 0 0 1.5em 0;
+				margin: 0 0 2.0em 0;
 			}
 
 				header > p {
@@ -1326,7 +1332,7 @@
 			}
 
 			.panel {
-				padding: 3.5em 2.5em 3.5em 2.5em;
+				padding: 2.5em 2.5em 3.5em 2.5em;
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -1423,7 +1429,7 @@
 					#home header > p#home_p2 {
 						top: 60.0%;
 					}
-
+	
 		/* Footer */
 
 			#footer {
