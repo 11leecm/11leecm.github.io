@@ -1,6 +1,6 @@
 /*
 	Personal Website: http://www.chrismlee.com
-	Created with HTML5, CSS3, JavaScript, Skel framework, and Font Awesome CSS toolkit.
+	Created with HTML5, CSS3, JavaScript, Skel framework, Font Awesome CSS toolkit, and Formspree.io form submission.
 	File: util.js
 */
 

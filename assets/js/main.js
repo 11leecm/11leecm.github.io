@@ -1,6 +1,6 @@
 /*
 	Personal Website: http://www.chrismlee.com
-	Created with HTML5, CSS3, JavaScript, Skel framework, and Font Awesome CSS toolkit.
+	Created with HTML5, CSS3, JavaScript, Skel framework, Font Awesome CSS toolkit, and Formspree.io form submission.
 	File: main.js
 */
 
@@ -149,6 +149,31 @@
 
 							// Reposition.
 							$body._reposition();
+							
+							// Contact Form Validation
+							if (contactValidate) {
+								$('.contact_error').hide();
+								var name = $("#contact_name").val();
+								var email = $("#contact_email").val();
+								var subject = $("#contact_subject").val();
+								var message = $("#contact_message").val();
+								if (name == "") {
+									$("#contact_name_error").show();
+									errorsPresent = true;
+								}
+								if (subject == "") {
+									$("#contact_subject_error").show();
+									errorsPresent = true;
+								}
+								if (email == "") {
+									$("#contact_email_error").show();
+									errorsPresent = true;
+								}
+								if (message == "") {
+									$("#contact_message_error").show();
+									errorsPresent = true;
+								}
+							}
 
 							// Resize main to height of new panel.
 							$main.animate({
@@ -235,7 +260,37 @@
 					panels[hash]._activate(true, false, false);
 
 				$wrapper.fadeTo(settings.loadSpeed, 1.0);
-				
+					
+				// Contact Form
+				$("#contact_submit").click(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					// Form Processing
+						var name = $("#contact_name").val();
+						var email = $("#contact_email").val();
+						var subject = $("#contact_subject").val();
+						var message = $("#contact_message").val();
+						if (name == "" || subject == "" || email == "" || message == "") {
+							panels["contact"]._activate(false, true, true);
+						} else {
+							var dataString = 'name=' + name + '&email=' + email + '&subject=' + subject + '&message=' + message;
+							$.ajax({
+								type: "POST",
+								url: "//formspree.io/minirocket1@gmail.com",
+								data: dataString,
+								dataType: "json",
+								success: function(msg) {
+									panels["contact_submit_success"]._activate(false, true, false);
+									$("#contact_form")[0].reset();
+									$('.contact_error').hide();
+								},
+								error: function() {
+									panels["contact_submit_failure"]._activate(false, true, false);
+								}
+							});
+						}
+				});
+
 			})
 			.on('-desktop', function() {
 				window.setTimeout(function() {
@@ -244,6 +299,68 @@
 			})
 			.on('+mobile', function() {
 				// Init.
+				$('.contact_error').hide();
+				$('#contact_submit_success').hide();
+				$('#contact_submit_failure').hide();
+					
+				// Contact Form
+				$("#contact_submit").click(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.contact_error').hide();
+					var errorsPresent = false;
+					var name = $("#contact_name").val();
+					var email = $("#contact_email").val();
+					var subject = $("#contact_subject").val();
+					var message = $("#contact_message").val();
+					if (name == "") {
+						$("#contact_name_error").show();
+						errorsPresent = true;
+					}
+					if (subject == "") {
+						$("#contact_subject_error").show();
+						errorsPresent = true;
+					}
+					if (email == "") {
+						$("#contact_email_error").show();
+						errorsPresent = true;
+					}
+					if (message == "") {
+						$("#contact_message_error").show();
+						errorsPresent = true;
+					}
+					if (errorsPresent == true) {
+						// No action needed on mobile.
+					} else {
+						var dataString = 'name=' + name + '&email=' + email + '&subject=' + subject + '&message=' + message;
+						$.ajax({
+							type: "POST",
+							url: "//formspree.io/minirocket1@gmail.com",
+							data: dataString,
+							dataType: "json",
+							success: function() {
+								$('#contact').hide();
+								$('#contact_submit_success').show();
+								$("#contact_form")[0].reset();
+								$('.contact_error').hide();
+							},
+							error: function() {
+								$('#contact').hide();
+								$('#contact_submit_failure').show();
+							}
+						});
+					}
+				});
+				
+				$("#contact_submit_success_return").click(function(e) {
+					$('#contact').show();
+					$('#contact_submit_success').hide();
+				});
+				
+				$("#contact_submit_failure_return").click(function(e) {
+					$('#contact').show();
+					$('#contact_submit_failure').hide();
+				});
 			});
 			
 	});

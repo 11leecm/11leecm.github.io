@@ -1,6 +1,6 @@
 Personal Website: http://www.chrismlee.com
 
-Created with HTML5, CSS3, JavaScript, Skel framework, and Font Awesome CSS toolkit.
+Created with HTML5, CSS3, JavaScript, Skel framework, Font Awesome CSS toolkit, and Formspree.io form submission.
 
 File: README.md
 
@@ -12,3 +12,5 @@ Versions:
 - 1.0: website ready with home div
 - 1.1: fixed me01.jpg, capitalization error
 - 2.0: added contact div
+- 2.1: removed contact form, Github Pages do not support PHP
+- 2.2: re-added contact form, using Formspree.io to submit form via AJAX
