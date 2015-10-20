@@ -295,14 +295,6 @@
 				$('.contact_error').hide();
 				$('#contact_submit_success').hide();
 				$('#contact_submit_failure').hide();
-				
-				// Testing Mobile Orientation
-				$window
-					.on('orientationchange', function() {
-						
-						alert("test");
-
-				});
 					
 				// Contact Form
 				$("#contact_submit").click(function(e) {
