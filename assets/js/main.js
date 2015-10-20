@@ -60,13 +60,10 @@
 					firstPanelId = null,
 					isLocked = false,
 					hash = window.location.hash.substring(1);
-
+					
+				// Enable touchscreen features.
 				if (skel.vars.touch) {
-
-					settings.fadeSpeed = 0;
-					settings.resizeSpeed = 0;
 					$nav_links.find('span').remove();
-
 				}
 
 				// Body.
@@ -78,10 +75,11 @@
 				};
 
 				$body._reposition = function() {
-					if (skel.vars.touch && (window.orientation == 0 || window.orientation == 180))
+					if (skel.vars.touch && (window.orientation == 0 || window.orientation == 180)) {
 						$wrapper.css('padding-top', Math.max((($window.height() - (panels[activePanelId].outerHeight() + $footer.outerHeight())) / 2) - $nav.height(), 30) + 'px');
-					else
+					} else {
 						$wrapper.css('padding-top', ((($window.height() - panels[firstPanelId].height()) / 2) - $nav.height()) + 'px');
+					}
 				};
 
 				// Panels.
@@ -116,10 +114,11 @@
 						$nav_links.filter('[href="#' + id + '"]').addClass('active');
 
 						// Change hash.
-						if (i == 0)
-							window.location.hash = '#';
-						else
+						if (history.replaceState) {
+							history.replaceState(null, null, '#' + id);
+						} else {
 							window.location.hash = '#' + id;
+						}
 
 						// Add bottom padding.
 						var x = parseInt($wrapper.css('padding-top')) +
@@ -157,19 +156,15 @@
 								var message = $("#contact_message").val();
 								if (name == "") {
 									$("#contact_name_error").show();
-									errorsPresent = true;
 								}
 								if (subject == "") {
 									$("#contact_subject_error").show();
-									errorsPresent = true;
 								}
 								if (email == "") {
 									$("#contact_email_error").show();
-									errorsPresent = true;
 								}
 								if (message == "") {
 									$("#contact_message_error").show();
-									errorsPresent = true;
 								}
 							}
 
@@ -221,7 +216,7 @@
 
 				$window
 					.on('orientationchange', function() {
-
+						
 						if (!isLocked)
 							$body._reposition();
 
@@ -247,16 +242,16 @@
 				// CSS polyfills (IE<9).
 				if (skel.vars.IEVersion < 9)
 					$(':last-child').addClass('last-child');
-
 					
 				// Init.
 				$('.contact_error').hide();
 				$window
 					.trigger('resize');
 
-				if (hash && hash in panels)
+				if (hash && hash in panels) {
 					panels[hash]._activate(true, false, false);
-
+				}
+				
 				$wrapper.fadeTo(settings.loadSpeed, 1.0);
 					
 				// Contact Form
@@ -300,6 +295,17 @@
 				$('.contact_error').hide();
 				$('#contact_submit_success').hide();
 				$('#contact_submit_failure').hide();
+				
+				// Testing Mobile Orientation
+				$("#contact").click(function(e)) {
+					e.preventDefault();
+					e.stopPropagation();
+					if (skel.vars.touch && (window.orientation == 0 || window.orientation == 180)) {
+						alert(window.orientation);
+					} else {
+						alert("failed");
+					}
+				}
 					
 				// Contact Form
 				$("#contact_submit").click(function(e) {
