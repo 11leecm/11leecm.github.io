@@ -16,3 +16,4 @@ Versions:
 - 2.2: re-added contact form, using Formspree.io to submit form via AJAX
 - 2.3: fixed activePanel error
 - 2.4: fixed touchscreen animations and window.location.hash default behavior, testing mobile orientation
+- 2.4.1: testing mobile orientation

@@ -297,7 +297,7 @@
 				$('#contact_submit_failure').hide();
 				
 				// Testing Mobile Orientation
-				$("#contact").click(function(e)) {
+				$("#contact").click(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 					if (skel.vars.touch && (window.orientation == 0 || window.orientation == 180)) {
@@ -305,7 +305,7 @@
 					} else {
 						alert("failed");
 					}
-				}
+				});
 					
 				// Contact Form
 				$("#contact_submit").click(function(e) {
