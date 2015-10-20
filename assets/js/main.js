@@ -298,6 +298,7 @@
 				
 				// Testing Mobile Orientation
 				$("#contact").click(function(e) {
+					alert("test");
 					e.preventDefault();
 					e.stopPropagation();
 					if (skel.vars.touch && (window.orientation == 0 || window.orientation == 180)) {
