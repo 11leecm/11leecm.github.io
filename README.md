@@ -21,3 +21,5 @@ Versions:
 - 2.4.3: testing mobile orientation
 - 2.5: fixed mobile orientation
 - 3.0: changed font, added social media links, added email/location, changed home text
+- 3.1: fixed top/bottom spacing to center
+- 3.2: forgot to commit README.md in version 3.1
