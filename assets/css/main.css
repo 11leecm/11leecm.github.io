@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic");
 @import url("font-awesome.min.css");
 
 /*
@@ -750,7 +750,7 @@
 		background-image: url("images/overlay.png"), url("images/background.png");
 		background-repeat: repeat, no-repeat;
 		background-size: auto, 100% 100%;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Open Sans Condensed', sans-serif;
 		font-weight: 300;
 		color: #777777;
 	}
@@ -767,7 +767,7 @@
 		}
 
 	input, textarea, select {
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Open Sans Condensed', sans-serif;
 		font-weight: 300;
 		color: #777777;
 	}
@@ -1122,10 +1122,35 @@
 			#footer a:hover {
 				color: white;
 			}
+		
+		#footer #social_media_nav {
+			padding-bottom: 1.0em;
+		}
+			
+		#footer #social_media_nav a {
+			position: relative;
+			display: inline-block;
+			color: #ffffff;
+			width: 1em;
+			height: 1em;
+			line-height: 0.9em;
+		}
+		
+			#footer #social_media_nav a.icon:before {
+				padding-right: 0;
+			}
+
+		#footer .contact_info {
+			margin-bottom: 0;
+		}
 
 		#footer .copyright li {
 			display: inline-block;
 		}
+		
+			#footer .copyright li span {
+				padding-right: 0.25em;
+			}
 
 			#footer .copyright li:before {
 				display: inline;
@@ -1165,18 +1190,15 @@
 			}
 
 			h1 {
-				font-size: 2.4em;
-				letter-spacing: -0.015em;
+				font-size: 3.0em;
 			}
 
 			h2 {
-				font-size: 2.0em;
-				letter-spacing: -0.015em;
+				font-size: 2.5em;
 			}
 
 			h3, h4, h5, h6 {
-				font-size: 1.25em;
-				letter-spacing: -0.015em;
+				font-size: 1.5em;
 			}
 
 		/* Section/Article */
@@ -1417,26 +1439,48 @@
 					#home header > p {
 						position: absolute;
 						left: 0;
-						font-size: 1.5em;
-						letter-spacing: -0.015em;
+						font-size: 1.15em;
 						margin-top: 0;
 					}
 					
 					#home header > p#home_p1 {
-						top: 50.0%;
+						top: 55.0%;
 					}
 					
 					#home header > p#home_p2 {
-						top: 60.0%;
+						top: 65.0%;
 					}
 	
 		/* Footer */
 
 			#footer {
 				text-align: center;
-				padding: 2em 0 0 0;
+				padding: 1.5em 0 0 0;
 				font-size: 1em;
 			}
+			
+				#footer #social_media_nav a {
+					font-size: 2.0em;
+					margin: 0 0.25em 0 0.25em;
+					opacity: 0.5;
+					outline: 0;
+					-moz-transition: opacity .25s ease-in-out, color .25s ease-in-out;
+					-webkit-transition: opacity .25s ease-in-out, color .25s ease-in-out;
+					-ms-transition: opacity .25s ease-in-out, color .25s ease-in-out;
+					transition: opacity .25s ease-in-out, color .25s ease-in-out;
+				}
+
+					#footer #social_media_nav a:before {
+						font-size: 0.8em;
+					}
+					
+					#footer #social_media_nav span {
+						display: none;
+					}
+						
+					#footer #social_media_nav a:hover {
+						opacity: 1.0;	
+					}
 
 	}
 
@@ -1453,12 +1497,10 @@
 
 			h1, h2 {
 				font-size: 1.75em;
-				letter-spacing: -0.025em;
 			}
 
 			h3, h4, h5, h6 {
 				font-size: 1.25em;
-				letter-spacing: -0.025em;
 			}
 
 		/* Section/Article */
@@ -1569,12 +1611,15 @@
 			}
 
 				#home header > h1 {
-					font-size: 2.15em;
-					letter-spacing: -0.025em;
+					font-size: 2.5em;
 				}
 
 				#home header > p {
-					font-size: 1.25em;
+					font-size: 1.15em;
+				}
+				
+				#home header > p#home_p1 {
+					margin-top: 1.0em;
 				}
 				
 				#home header > p#home_p2 {
@@ -1585,10 +1630,28 @@
 
 			#footer {
 				text-align: center;
-				padding: 2em 0 0 0;
+				padding: 1.5em 0 0 0;
 				font-size: 1.0em;
 			}
-
+			
+				#footer #social_media_nav a {
+					font-size: 2.0em;
+					margin: 0 0.25em 0 0.25em;
+					opacity: 0.5;
+					outline: 0;
+					width: 1.2em;
+					height: 1.2em;
+					line-height: 1.05em;
+				}
+				
+					#footer #social_media_nav a:active {
+						opacity: 1.0;
+					}
+				
+					#footer #social_media_nav a span {
+						display: none;
+					}
+					
 				#footer .copyright li {
 					display: block;
 				}
@@ -1596,5 +1659,5 @@
 					#footer .copyright li:before {
 						display: none;
 					}
-
+					
 	}
