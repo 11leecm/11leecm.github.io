@@ -1,9 +1,5 @@
-@import url("http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic");
-@import url("font-awesome.min.css");
-
 /*
 	Personal Website: http://www.chrismlee.com
-	Created with HTML5, CSS3, JavaScript, Skel framework, Font Awesome CSS toolkit, and Formspree.io form submission.
 	File: main.css
 */
 
@@ -319,9 +315,17 @@
 		.row > * {
 			padding: 25px 0 0 25px;
 		}
+		
+		.row.no_space > * {
+			padding: 0;
+		}
 
 		.row {
 			margin: -25px 0 -1px -25px;
+		}
+		
+		.row.no_space {
+			margin: 0 0 -1px 0;
 		}
 
 		.row.uniform > * {
@@ -534,9 +538,17 @@
 		.row > * {
 			padding: 15px 0 0 15px;
 		}
-
+		
+		.row.no_space > * {
+			padding: 0;
+		}
+		
 		.row {
 			margin: -15px 0 -1px -15px;
+		}
+		
+		.row.no_space {
+			margin: 0 0 -1px 0;
 		}
 
 		.row.uniform > * {
@@ -754,7 +766,7 @@
 		font-weight: 300;
 		color: #777777;
 	}
-
+	
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
 			-moz-transition: none !important;
 			-webkit-transition: none !important;
@@ -1082,25 +1094,182 @@
 
 /* Home */
 
-	#home .pic {
-		position: relative;
-		display: block;
+	#home {
+	
 	}
 
-		#home .pic:before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 1;
+		#home .pic {
+			position: relative;
+			display: block;
 		}
 
-/* Contact */
+			#home .pic:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+			}
+
+/* About */
+
+	#about {
 		
-	.contact_error {
-		color: red;
+	}
+		
+		#about .about_bio {
+			
+		}
+	
+			#about .about_bio .about_bio_item {
+				position: relative;
+				padding: 25px 0 25px 0;
+			}
+
+				#about .about_bio .about_bio_item .about_bio_image {
+					display: block;
+					margin: 0 auto;
+					width: 50%;
+					border-radius: 100%;
+					padding-bottom: 30px;
+				}
+	
+				#about .about_bio .about_bio_item .about_bio_content {
+					font-size: 0.9em;
+					line-height: 1.50em;
+					margin-bottom: 0;
+					text-align: center;
+				}
+	
+		#about .about_info {
+
+		}
+	
+			#about .about_info .about_info_item {
+				position: relative;
+				padding-bottom: 25px;
+				margin-bottom: 25px;
+			}
+	
+				#about .about_info .about_info_item .about_info_header {
+					text-transform: uppercase;
+					font-weight: 700;
+					font-size: 1.10em;
+					letter-spacing: 1px;
+					padding-bottom: 10px;
+				}
+				
+					#about .about_info .about_info_item .about_info_header#about_info_header_1 {
+						color: #33a3f3;
+					}
+					
+					#about .about_info .about_info_item .about_info_header#about_info_header_2 {
+						color: #78c272;
+					}
+					
+					#about .about_info .about_info_item .about_info_header#about_info_header_3 {
+						color: #febe10;
+					}
+					
+					#about .about_info .about_info_item .about_info_header#about_info_header_4 {
+						color: #de6868;
+					}
+	
+				#about .about_info .about_info_item .about_info_content {
+		
+				}
+			
+				#about .about_info .about_info_item:after {
+					content: '';
+					position: absolute;
+					width: 50px;
+					height: 2px;
+					background: #c5c4c6;
+				}
+				
+				#about .about_info .about_info_item:last-child {
+					padding-bottom: 10px;
+					margin-bottom: 0;
+				}
+			
+				#about .about_info .about_info_item:last-child:after {
+					display: none;
+				}
+
+/* Great People */
+
+	#greatpeople {
+	
+	}
+	
+		#greatpeople .greatpeople_list {
+			padding-top: 10px;
+			text-align: center;
+		}
+		
+			#greatpeople .greatpeople_list .greatpeople_item {
+				font-size: 0.9em;
+				padding-bottom: 10px;
+			}
+			
+				#greatpeople .greatpeople_list .greatpeople_item .greatpeople_name {
+					
+				}
+				
+					#greatpeople .greatpeople_list .greatpeople_item .greatpeople_name#mom {
+						color: #33a3f3;
+					}
+					
+					#greatpeople .greatpeople_list .greatpeople_item .greatpeople_name#dad {
+						color: #78c272;
+					}
+					
+					#greatpeople .greatpeople_list .greatpeople_item .greatpeople_name#brandon_l {
+						color: #febe10;
+					}
+					
+					#greatpeople .greatpeople_list .greatpeople_item .greatpeople_name#sandy_t {
+						color: #de6868;
+					}
+					
+					#greatpeople .greatpeople_list .greatpeople_item .greatpeople_name#kazu_s {
+						color: #33a3f3;
+					}
+					
+					#greatpeople .greatpeople_list .greatpeople_item .greatpeople_name#vincent_t {
+						color: #78c727;
+					}
+					
+					#greatpeople .greatpeople_list .greatpeople_item .greatpeople_name#grady_t {
+						color: #febe10;
+					}
+					
+					#greatpeople .greatpeople_list .greatpeople_item .greatpeople_name#christian_c {
+						color: #de6868;
+					}
+
+/* Contact */
+
+	#contact {
+	
+	}
+		
+		#contact .contact_error {
+			color: #de6868;
+		}
+
+/* Contact Submit Success */
+		
+	#contact_submit_success {
+	
+	}
+	
+/* Contact Submit Failure */
+	
+	#contact_submit_failure {
+	
 	}
 
 /* Footer */
@@ -1140,28 +1309,50 @@
 				padding-right: 0;
 			}
 
-		#footer .contact_info {
-			margin-bottom: 0;
-		}
-
-		#footer .copyright li {
+		#footer #copyright li {
 			display: inline-block;
 		}
 		
-			#footer .copyright li span {
+			#footer #copyright li span {
 				padding-right: 0.25em;
 			}
 
-			#footer .copyright li:before {
+			#footer #copyright li:before {
 				display: inline;
 				content: '\2022';
 				opacity: 0.5;
 				padding: 0 0.75em 0 0.75em;
 			}
 
-			#footer .copyright li:first-child:before {
+			#footer #copyright li:first-child:before {
 				display: none;
 			}
+			
+/* Colors */
+
+	.blue {
+		color: #33a3f3;
+	}
+	
+	.gold {
+		color: #febe10;
+	}
+	
+	.green {
+		color: #78c272;
+	}
+	
+	.orange {
+		color: #f1b15f
+	}
+	
+	.red {
+		color: #de6868;
+	}
+	
+	.turquoise {
+		color: #1abc9c;
+	}
 
 /* Desktop */
 
@@ -1198,7 +1389,7 @@
 			}
 
 			h3, h4, h5, h6 {
-				font-size: 1.5em;
+				font-size: 1.25em;
 			}
 
 		/* Section/Article */
@@ -1344,7 +1535,7 @@
 						#nav a.active:after {
 							border-bottom-width: 0.5em;
 						}
-
+		
 		/* Panels */
 
 			#main {
@@ -1354,7 +1545,7 @@
 			}
 
 			.panel {
-				padding: 2.5em 2.5em 3.5em 2.5em;
+				padding: 0;
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -1371,7 +1562,7 @@
 				#home .pic {
 					display: block;
 					position: absolute;
-					right: -1px;
+					right: 0px;
 					top: 0;
 					height: 100%;
 					text-decoration: none;
@@ -1432,7 +1623,7 @@
 					#home header > h1 {
 						position: absolute;
 						left: 0;
-						bottom: 57.5%;
+						top: 30.0%;
 						margin: 0;
 					}
 
@@ -1444,12 +1635,60 @@
 					}
 					
 					#home header > p#home_p1 {
-						top: 55.0%;
+						top: 52.5%;
 					}
 					
 					#home header > p#home_p2 {
-						top: 65.0%;
+						top: 62.5%;
 					}
+					
+		/* About */
+		
+			#about {
+				padding: 2.5em 2.5em 2.5em 2.5em;
+			}
+				
+				#about .about_bio {
+					text-align: left;
+				}
+			
+				#about .about_info {
+					text-align: right;
+				}
+			
+					#about .about_info .about_info_item {
+						
+					}
+					
+						#about .about_info .about_info_item:after {
+							bottom: 0;
+							right: 0;
+						}
+
+		/* Great People */
+		
+			#greatpeople {
+				padding: 2.5em 2.5em 2.5em 2.5em;
+			}
+
+		/* Contact */
+		
+			#contact {
+				padding: 2.5em 2.5em 2.5em 2.5em;
+			}
+			
+		/* Contact Submit Success */
+		
+			#contact_submit_success {
+				padding: 2.5em 2.5em 2.5em 2.5em;
+			}
+				
+		/* Contact Submit Failure */
+		
+			#contact_submit_failure {
+				padding: 2.5em 2.5em 2.5em 2.5em;
+			}
+			
 	
 		/* Footer */
 
@@ -1581,7 +1820,7 @@
 			}
 
 			.panel {
-				padding: 15px 15px 15px 15px;
+				padding: 0;
 				margin: 0 0 7px 0;
 				background: #ffffff;
 				box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.25);
@@ -1593,38 +1832,86 @@
 
 		/* Home */
 
-			#home .pic {
-				width: 100%;
+			#home {
+				padding: 15px 15px 15px 15px;
 			}
-
-				#home .pic img {
-					display: block;
+			
+				#home .pic {
 					width: 100%;
 				}
 
-				#home .pic .arrow {
-					display: none;
+					#home .pic img {
+						display: block;
+						width: 100%;
+					}
+
+					#home .pic .arrow {
+						display: none;
+					}
+
+				#home header {
+					text-align: center;
 				}
 
-			#home header {
-				text-align: center;
+					#home header > h1 {
+						font-size: 2.5em;
+					}
+
+					#home header > p {
+						font-size: 1.15em;
+					}
+				
+					#home header > p#home_p1 {
+						margin-top: 1.0em;
+					}
+				
+					#home header > p#home_p2 {
+						margin-top: 0em;
+					}
+		
+		/* About */
+		
+			#about {
+				padding: 15px 15px 15px 15px;
 			}
+	
+				#about .about_info {
+					text-align: center;
+				}
+		
+					#about .about_info .about_info_item {
 
-				#home header > h1 {
-					font-size: 2.5em;
-				}
-
-				#home header > p {
-					font-size: 1.15em;
-				}
+					}
 				
-				#home header > p#home_p1 {
-					margin-top: 1.0em;
-				}
-				
-				#home header > p#home_p2 {
-					margin-top: 0em;
-				}
+						#about .about_info .about_info_item:after {
+							position: absolute;
+							bottom: 0;
+							right: calc(50% - 25px);
+						}
+		
+		/* Great People */
+		
+			#greatpeople {
+				padding: 15px 15px 15px 15px;
+			}
+		
+		/* Contact */
+		
+			#contact {
+				padding: 15px 15px 15px 15px;
+			}
+			
+		/* Contact Submit Success */
+		
+			#contact_submit_success {
+				padding: 15px 15px 15px 15px;
+			}
+			
+		/* Contact Submit Failure */
+		
+			#contact_submit_failure {
+				padding: 15px 15px 15px 15px;
+			}
 
 		/* Footer */
 
@@ -1652,11 +1939,11 @@
 						display: none;
 					}
 					
-				#footer .copyright li {
+				#footer #copyright li {
 					display: block;
 				}
 
-					#footer .copyright li:before {
+					#footer #copyright li:before {
 						display: none;
 					}
 					

@@ -1,6 +1,5 @@
 /*
 	Personal Website: http://www.chrismlee.com
-	Created with HTML5, CSS3, JavaScript, Skel framework, Font Awesome CSS toolkit, and Formspree.io form submission.
 	File: main.js
 */
 
@@ -9,13 +8,13 @@
 	var settings = {
 
 		// Speed to load page.
-		loadSpeed: 800,
+		loadSpeed: 1000,
 
 		// Speed to resize panel.
-		resizeSpeed: 600,
+		resizeSpeed: 700,
 
 		// Speed to fade in/out.
-		fadeSpeed: 300,
+		fadeSpeed: 500,
 
 		// Size factor.
 		sizeFactor: 11.5,
@@ -58,6 +57,7 @@
 					panels = [],
 					activePanelId = null,
 					firstPanelId = null,
+					saveActivePanelId = null,
 					isLocked = false,
 					hash = window.location.hash.substring(1);
 					
@@ -137,6 +137,7 @@
 						panels[activePanelId].fadeOut(instant ? 0 : settings.fadeSpeed, function() {
 						
 							// Set new active.
+							saveActivePanelId = activePanelId;
 							activePanelId = id;
 							
 							// Force scroll to top.

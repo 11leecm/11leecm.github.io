@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!--
 	Personal Website: http://www.chrismlee.com
-	Created with HTML5, CSS3, JavaScript, Skel framework, Font Awesome CSS toolkit, and Formspree.io form submission.
 	File: index.html
 -->
 <html>
@@ -9,9 +8,12 @@
 		<title>Christopher M. Lee</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" href="images/favicon.png">
 		
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css" />
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic" type="text/css" />
+		<link rel="stylesheet" href="assets/css/main.css" type="text/css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" type="text/css" /></noscript>
 		
 		<!--[if lt9 IE 8]>
 			<script src="assets/js/ie/html5shiv.js"></script>
@@ -23,6 +25,8 @@
 		<div id="wrapper">
 			<nav id="nav">
 				<a href="#home" class="icon fa-home active"><span>Home</span></a>
+				<a href="#about" class="icon fa-user"><span>About</span></a>
+				<a href="#greatpeople" class="icon fa-users"><span>Great People</span></a>
 				<a href="#contact" class="icon fa-envelope"><span>Contact</span></a>
 			</nav>
 
@@ -30,13 +34,91 @@
 				<article id="home" class="panel">
 					<header>
 						<h1>Christopher M. Lee</h1>
-						<p id="home_p1">Software Engineer By Day, Self-Proclaimed Explorer By Night</p>
+						<p id="home_p1">Software Engineer By Day, Self-Proclaimed Adventurer By Night</p>
 						<p id="home_p2">Proud Alumni of the University of California, Berkeley '15</p>
 					</header>
-					<a href="#contact" class="jumplink pic">
+					<a href="#about" class="jumplink pic">
 						<span class="arrow icon fa-chevron-right"><span>About Me</span></span>
 						<img src="images/me01.jpg" alt="" />
 					</a>
+				</article>
+				<article id="about" class="panel">
+					<header>	
+						<h2>About Me</h2>
+					</header>
+					<div class="row">
+						<div class="8u 12u$(mobile) about_bio">
+							<div class="about_bio_item">
+								<img src="images/me02.jpg" alt="" class="about_bio_image"/>
+								<p class="about_bio_content">
+									I am a 22-year-old software engineer passionate about design, simplicity, and 
+									education. I am currently working as a Software Engineer on the Product 
+									Development Team at Naehas, a private company based in Palo Alto, California. 
+									I recently graduated from the University of California, Berkeley (Go Bears!) 
+									with a Bachelor of Science in Electrical Engineering and Computer Sciences 
+									and a minor in Music.
+								</p>
+							</div>
+						</div>
+						<div class="4u 12u$(mobile) about_info">
+							<div class="about_info_item">
+								<h3 class="about_info_header" id="about_info_header_1">I am from</h3>
+								<h3 class="about_info_content">Aliso Viejo, California</h3>
+							</div>
+							<div class="about_info_item">
+								<h3 class="about_info_header" id="about_info_header_2">I studied at</h3>
+								<h3 class="about_info_content">U.C. Berkeley</h3>
+							</div>
+							<div class="about_info_item">
+								<h3 class="about_info_header" id="about_info_header_3">I work at</h3>
+								<h3 class="about_info_content">Naehas</h3>
+							</div>
+							<div class="about_info_item">
+								<h3 class="about_info_header" id="about_info_header_4">I live in</h3>
+								<h3 class="about_info_content">San Jose, California</h3>
+							</div>
+						</div>
+					</div>
+				</article>
+				<article id="greatpeople" class="panel">
+					<header>
+						<h2>Great People</h2>
+					</header>
+					<p>Thanks to all these great people who've helped me along the way. You all mean more to me than words can express.</p>
+					<ul class="greatpeople_list">
+						<li class="greatpeople_item">
+							<span class="greatpeople_name" id="mom">Mom </span>
+							<span class="greatpeople_content">for the unconditional love and support</span>
+						</li>
+						<li class="greatpeople_item">
+							<span class="greatpeople_name" id="dad">Dad </span>
+							<span class="greatpeople_content">for always being my number one role model</span>
+						</li>
+						<li class="greatpeople_item">
+							<span class="greatpeople_name" id="brandon_l">Brandon L.</span>
+							<span class="greatpeople_content">for reminding me to have fun with every single day</span>
+						</li>
+						<li class="greatpeople_item">
+							<span class="greatpeople_name" id="sandy_t">Sandy T.</span>
+							<span class="greatpeople_content">for continually aspiring me to become the best man I can be</span>
+						</li>
+						<li class="greatpeople_item">
+							<span class="greatpeople_name" id="kazu_s">Kazu S. </span>
+							<span class="greatpeople_content">for always looking out for me and putting up with my crap</span>
+						</li>
+						<li class="greatpeople_item">
+							<span class="greatpeople_name" id="vincent_t">Vincent T. </span>
+							<span class="greatpeople_content">for always being down to chill and enjoy life</span>
+						</li>
+						<li class="greatpeople_item">
+							<span class="greatpeople_name" id="grady_t">Grady T. </span>
+							<span class="greatpeople_content">for struggling together and surviving through our college years</span>
+						</li>
+						<li class="greatpeople_item">
+							<span class="greatpeople_name" id="christian_c">Christian C. </span>
+							<span class="greatpeople_content">for reminding me to do with I love and love what I do</span>
+						</li>
+					</ul>
 				</article>
 				<article id="contact" class="panel">
 					<header>
@@ -102,7 +184,7 @@
 					<a href="https://www.instagram.com/youcbobalee" class="icon fa-instagram"><span>Instagram</span></a>
 					<a href="https://github.com/11leecm" class="icon fa-github"><span>Github</span></a>
 				</nav>
-				<ul class="copyright">
+				<ul id="copyright">
 					<li><span class="icon fa-envelope"></span> 11leecm@berkeley.edu</li>
 					<li><span class="icon fa-copyright"></span> 2015 Christopher M. Lee</li>
 					<li><span class="icon fa-home"></span> San Jose, California</li>
