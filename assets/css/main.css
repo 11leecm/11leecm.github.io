@@ -1125,7 +1125,6 @@
 	
 			#about .about_bio .about_bio_item {
 				position: relative;
-				padding: 25px 0 25px 0;
 			}
 
 				#about .about_bio .about_bio_item .about_bio_image {
@@ -1651,6 +1650,10 @@
 				#about .about_bio {
 					text-align: left;
 				}
+				
+					#about .about_bio .about_bio_item {
+						padding: 25px 0 25px 0;
+					}
 			
 				#about .about_info {
 					text-align: right;
@@ -1874,6 +1877,14 @@
 			#about {
 				padding: 15px 15px 15px 15px;
 			}
+			
+				#about .about_bio {
+				
+				}
+				
+					#about .about_bio .about_bio_item {
+						padding: 0 0 0 0;
+					}
 	
 				#about .about_info {
 					text-align: center;
