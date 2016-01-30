@@ -1,6 +1,6 @@
 /*
 	Personal Website: http://www.chrismlee.com
-	File: main.css
+	File: assets/css/main.css
 */
 
 /* Reset */
@@ -759,7 +759,7 @@
 /* Basic */
 
 	body {
-		background-image: url("images/overlay.png"), url("images/background.png");
+		background-image: url("../../images/overlay.png"), url("../../images/background.png");
 		background-repeat: repeat, no-repeat;
 		background-size: auto, 100% 100%;
 		font-family: 'Open Sans Condensed', sans-serif;
@@ -1504,6 +1504,16 @@
 						transition: opacity .25s ease-in-out;
 						width: 5.5em;
 						margin-left: -2.75em;
+					}
+					
+				#nav a#sandy {
+					margin: 0 0.25em 0 1.5em;
+				}
+							
+					#nav a#sandy span {
+						opacity: 1;
+						width: 7.5em;
+						margin-left: -3.75em;
 					}
 
 						#nav a span:after {

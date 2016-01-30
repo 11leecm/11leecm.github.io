@@ -1,8 +1,3 @@
-/*
-	Personal Website: http://www.chrismlee.com
-	File: util.js
-*/
-
 (function($) {
 
 	/**

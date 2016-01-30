@@ -1,6 +1,6 @@
 /*
 	Personal Website: http://www.chrismlee.com
-	File: main.js
+	File: assets/js/main.js
 */
 
 (function($) {
