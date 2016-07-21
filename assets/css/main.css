@@ -1196,6 +1196,12 @@
 					display: none;
 				}
 
+/* Resume */
+
+	#resume {
+	
+	}
+
 /* Great People */
 
 	#greatpeople {
@@ -1650,6 +1656,10 @@
 						top: 62.5%;
 					}
 					
+					#home header > p#home_p3 {
+						top: 85.0%;
+					}
+					
 		/* About */
 		
 			#about {
@@ -1680,6 +1690,12 @@
 							bottom: 0;
 							right: 0;
 						}
+
+		/* Resume */
+		
+			#resume {
+				padding: 2.5em 2.5em 2.5em 2.5em;
+			}
 
 		/* Great People */
 		
@@ -1916,6 +1932,12 @@
 							bottom: 0;
 							right: calc(50% - 25px);
 						}
+		
+		/* Resume */
+		
+			#resume {
+				padding: 15px 15px 15px 15px;
+			}
 		
 		/* Great People */
 		
